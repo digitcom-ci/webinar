@@ -1,1 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accès Webinaire AFG</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+<div class="bg"></div>
+
+<div class="card">
+
+    <h1>Webinaire AFG</h1>
+    <p class="subtitle">Réservez votre accès sécurisé</p>
+
+    <form id="formulaire" class="form">
+
+        <div class="inputBox">
+            <input type="text" id="nom" required>
+            <label>Nom complet</label>
+        </div>
+
+        <div class="inputBox">
+            <input type="email" id="email" required>
+            <label>Email</label>
+        </div>
+
+        <div class="inputBox">
+            <input type="tel" id="tel" required>
+            <label>Téléphone</label>
+        </div>
+
+        <button type="submit" class="btn">Valider mon inscription</button>
+    </form>
+
+    <div id="acces" class="successBox">
+        <div class="check">✓</div>
+        <h3>Inscription confirmée</h3>
+        <p>Votre accès au live est débloqué</p>
+
+        <a id="btnZoom" href="TON_LIEN_ZOOM" target="_blank" class="join">
+            Rejoindre le webinaire
+        </a>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
