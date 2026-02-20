@@ -3,7 +3,7 @@ const acces = document.getElementById('acces');
 const btnZoom = document.getElementById('btnZoom');
 
 // Lien Google Apps Script qui enregistre les données
-const SHEET_URL = "https://script.google.com/macros/s/TON_SCRIPT_ID/exec";
+const SHEET_URL = "https://script.google.com/macros/s/https://script.google.com/macros/s/AKfycbw9af8jJ9nlMeLokUGRJqhTwi5DstMzrKQwoxMi4c4SMhZVcTlw6pEdKDJ0a7BLlcd_jg/exec";
 
 // Lien Zoom statique ou généré par le script
 const ZOOM_LINK = "https://zoom.us/j/TON_NUMERO_DE_REUNION"; 
