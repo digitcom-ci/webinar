@@ -1,24 +1,34 @@
-const form = document.getElementById("formulaire");
-const acces = document.getElementById("acces");
+const formulaire = document.getElementById('formulaire');
+const acces = document.getElementById('acces');
+const btnZoom = document.getElementById('btnZoom');
 
-// déjà inscrit
-if(localStorage.getItem("afg_webinar")){
-    form.style.display="none";
-    acces.style.display="block";
-}
+// Lien Google Apps Script qui enregistre les données
+const SHEET_URL = "https://script.google.com/macros/s/TON_SCRIPT_ID/exec";
 
-form.addEventListener("submit", e=>{
+// Lien Zoom statique ou généré par le script
+const ZOOM_LINK = "https://zoom.us/j/TON_NUMERO_DE_REUNION"; 
+
+formulaire.addEventListener('submit', function(e){
     e.preventDefault();
 
-    const data={
-        nom:nom.value,
-        email:email.value,
-        tel:tel.value,
-        date:new Date()
-    };
+    const nom = document.getElementById('nom').value;
+    const email = document.getElementById('email').value;
+    const tel = document.getElementById('tel').value;
 
-    localStorage.setItem("afg_webinar",JSON.stringify(data));
-
-    form.style.display="none";
-    acces.style.display="block";
+    // envoi des données à Google Sheet
+    fetch(`${SHEET_URL}?nom=${encodeURIComponent(nom)}&email=${encodeURIComponent(email)}&tel=${encodeURIComponent(tel)}`)
+    .then(response => response.json())
+    .then(data => {
+        if(data.result === "success"){
+            // affiche la div accès
+            acces.style.display = 'block';
+            btnZoom.href = ZOOM_LINK; // attribue le lien Zoom
+        } else {
+            alert("Erreur lors de l'inscription, réessayez.");
+        }
+    })
+    .catch(err => {
+        console.error(err);
+        alert("Impossible de se connecter au serveur.");
+    });
 });
