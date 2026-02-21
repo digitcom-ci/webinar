@@ -4,6 +4,7 @@
   --afg-accent:#7ABAC9;
   --text:#ffffff;
 }
+
 /* RESET */
 *{
     margin:0;
@@ -14,12 +15,12 @@
 
 body{
     height:100vh;
+    display:flex;
     justify-content:center;
     align-items:center;
     background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
     overflow:hidden;
     color:white;
-    display: block;
 }
 
 /* Background animation */
@@ -60,8 +61,6 @@ h2{
     margin-bottom:25px;
     font-weight:600;
 }
-
-
 
 /* INPUT GROUP */
 input{
