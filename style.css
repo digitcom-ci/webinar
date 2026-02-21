@@ -1,1 +1,190 @@
+/* ==============================
+   VARIABLES ET RESET
+============================== */
+:root{
+    --afg-blue:#662D5A;
+    --afg-light:#AF9DC4;
+    --afg-accent:#7ABAC9;
+    --text:#ffffff;
+}
 
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* ==============================
+   BODY & BACKGROUND
+============================== */
+body{
+    display:flex;
+    flex-direction:column;  /* empilement vertical */
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    background:linear-gradient(135deg,var(--afg-blue),var(--afg-light),var(--afg-accent));
+    overflow:hidden;
+    color:var(--text);
+    position:relative;
+}
+
+/* Background animé */
+body::before{
+    content:"";
+    position:absolute;
+    width:700px;
+    height:700px;
+    background:radial-gradient(circle,#00c6ff44,transparent 70%);
+    animation:move 15s infinite alternate ease-in-out;
+    top:-200px;
+    left:-200px;
+    z-index:0;
+}
+
+@keyframes move{
+    from{ transform:translate(0,0);}
+    to{ transform:translate(200px,200px);}
+}
+
+/* ==============================
+   TITRES
+============================== */
+h2{
+    text-align:center;
+    margin-bottom:10px;
+    font-weight:600;
+    z-index:1;
+}
+
+h3{
+    text-align:center;
+    margin-bottom:25px;
+    font-weight:400;
+    z-index:1;
+}
+
+/* ==============================
+   FORMULAIRE
+============================== */
+form{
+    position:relative;
+    backdrop-filter:blur(18px);
+    background:rgba(255,255,255,0.08);
+    border-radius:20px;
+    padding:40px 35px;
+    width:90%;
+    max-width:360px;
+    box-shadow:0 20px 50px rgba(0,0,0,0.5);
+    border:1px solid rgba(255,255,255,0.15);
+    animation:fadeIn .8s ease;
+    z-index:1;
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(40px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+/* ==============================
+   INPUTS
+============================== */
+input{
+    width:100%;
+    padding:14px 15px;
+    margin-bottom:18px;
+    border:none;
+    outline:none;
+    border-radius:12px;
+    background:rgba(255,255,255,0.15);
+    color:white;
+    font-size:14px;
+    transition:.25s;
+}
+
+input::placeholder{
+    color:#ddd;
+}
+
+input:focus{
+    background:rgba(255,255,255,0.25);
+    box-shadow:0 0 0 2px var(--afg-accent);
+    transform:scale(1.02);
+}
+
+/* ==============================
+   BOUTON
+============================== */
+button{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    font-size:16px;
+    font-weight:600;
+    background:linear-gradient(135deg,var(--afg-accent),var(--afg-light));
+    color:white;
+    cursor:pointer;
+    transition:.3s;
+    position:relative;
+    overflow:hidden;
+}
+
+button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 25px rgba(0,198,255,.5);
+}
+
+button:active{
+    transform:scale(.97);
+}
+
+/* LOADER */
+button.loading{
+    pointer-events:none;
+    background:#444;
+}
+
+button.loading::after{
+    content:"";
+    width:18px;
+    height:18px;
+    border:3px solid #fff;
+    border-top:3px solid var(--afg-accent);
+    border-radius:50%;
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    animation:spin .8s linear infinite;
+}
+
+@keyframes spin{
+    to{transform:translate(-50%,-50%) rotate(360deg);}
+}
+
+/* ==============================
+   MESSAGE
+============================== */
+#msg{
+    margin-top:15px;
+    text-align:center;
+    font-size:14px;
+    opacity:0;
+    transform:translateY(10px);
+    transition:.4s;
+}
+
+#msg.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+#msg.success{
+    color:#00ffae;
+}
+
+#msg.error{
+    color:#ff6b6b;
+}
