@@ -14,13 +14,15 @@
 }
 
 body{
-    height:100vh;
     display:block;
     justify-content:center;
     align-items:center;
     background:linear-gradient(135deg,#662D5A,#AF9DC4,#7ABAC9);
     overflow:hidden;
     color:white;
+    flex-direction: column; /* <<< important ! */
+    min-height: 100vh;
+}
 }
 
 /* Background animation */
