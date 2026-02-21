@@ -18,7 +18,7 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
-    background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    background:linear-gradient(135deg,#662D5A,#AF9DC4,#7ABAC9);
     overflow:hidden;
     color:white;
 }
