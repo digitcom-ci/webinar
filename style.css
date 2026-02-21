@@ -55,7 +55,7 @@ body::before{
 .logo-afg{
     display:block;
     margin:0 auto 20px auto;
-    max-width:180px;  /* ajuste la taille selon ton design */
+    max-width:200px;  /* ajuste la taille selon ton design */
     height:auto;
     z-index:1;
 }
