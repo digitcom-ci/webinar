@@ -1,7 +1,7 @@
 const form = document.getElementById("formulaire");
 const msg = document.getElementById("msg");
 
-const API = "COLLE_ICI_URL_WEBAPP";
+const API = "https://script.google.com/macros/s/AKfycbzsj3smsaX9Z7xk7C62AZW-xx8zmQ8_iDUJoZdUfA7v4n738Vkluqb0dw8_0hr2lB80/exec";
 
 form.addEventListener("submit", async (e)=>{
     e.preventDefault();
