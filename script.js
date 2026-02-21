@@ -1,34 +1,29 @@
-const formulaire = document.getElementById('formulaire');
-const acces = document.getElementById('acces');
-const btnZoom = document.getElementById('btnZoom');
+const form = document.getElementById("formulaire");
+const msg = document.getElementById("msg");
 
-// Lien Google Apps Script qui enregistre les données
-const SHEET_URL = "https://script.google.com/macros/s/https://script.google.com/macros/s/AKfycbw9af8jJ9nlMeLokUGRJqhTwi5DstMzrKQwoxMi4c4SMhZVcTlw6pEdKDJ0a7BLlcd_jg/exec";
+const API = "COLLE_ICI_URL_WEBAPP";
 
-// Lien Zoom statique ou généré par le script
-const ZOOM_LINK = "https://zoom.us/j/TON_NUMERO_DE_REUNION"; 
-
-formulaire.addEventListener('submit', function(e){
+form.addEventListener("submit", async (e)=>{
     e.preventDefault();
 
-    const nom = document.getElementById('nom').value;
-    const email = document.getElementById('email').value;
-    const tel = document.getElementById('tel').value;
+    const nom = document.getElementById("nom").value;
+    const email = document.getElementById("email").value;
+    const tel = document.getElementById("tel").value;
 
-    // envoi des données à Google Sheet
-    fetch(`${SHEET_URL}?nom=${encodeURIComponent(nom)}&email=${encodeURIComponent(email)}&tel=${encodeURIComponent(tel)}`)
-    .then(response => response.json())
-    .then(data => {
-        if(data.result === "success"){
-            // affiche la div accès
-            acces.style.display = 'block';
-            btnZoom.href = ZOOM_LINK; // attribue le lien Zoom
-        } else {
-            alert("Erreur lors de l'inscription, réessayez.");
+    msg.innerText = "Enregistrement...";
+
+    try{
+        const res = await fetch(`${API}?nom=${nom}&email=${email}&tel=${tel}`);
+        const data = await res.json();
+
+        if(data.status === "success"){
+            msg.innerText = "Inscription confirmée ✔";
+            form.reset();
+        }else{
+            msg.innerText = "Erreur lors de l'inscription";
         }
-    })
-    .catch(err => {
-        console.error(err);
-        alert("Impossible de se connecter au serveur.");
-    });
+
+    }catch(err){
+        msg.innerText = "Impossible de contacter le serveur";
+    }
 });
