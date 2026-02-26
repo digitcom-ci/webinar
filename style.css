@@ -1,1 +1,272 @@
-g
+/* ==============================
+   VARIABLES + RESET
+============================== */
+:root{
+    --afg-blue:#662D5A;
+    --afg-light:#AF9DC4;
+    --afg-accent:#7ABAC9;
+    --text:#ffffff;
+}
+
+*,
+*::before,
+*::after{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Poppins",sans-serif;
+}
+
+/* ==============================
+   BODY FIX MOBILE VH BUG
+============================== */
+html,body{
+    height:100%;
+}
+
+body{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    min-height:100dvh; /* FIX mobile browsers */
+    padding:24px 16px;
+    color:var(--text);
+    background:linear-gradient(135deg,var(--afg-blue),var(--afg-light),var(--afg-accent));
+    overflow-x:hidden;
+    position:relative;
+}
+
+/* Fond animé sécurisé */
+body::before{
+    content:"";
+    position:fixed;
+    width:120vmax;
+    height:120vmax;
+    background:radial-gradient(circle,#00c6ff33,transparent 70%);
+    animation:move 18s infinite alternate ease-in-out;
+    top:-40vmax;
+    left:-40vmax;
+    z-index:0;
+    pointer-events:none;
+}
+
+@keyframes move{
+    from{transform:translate(0,0);}
+    to{transform:translate(15vmax,15vmax);}
+}
+
+/* ==============================
+   LOGO & TITRE
+============================== */
+.logo-afg{
+    display:block;
+    margin:0 auto 20px;
+    width:min(200px,60vw);
+    height:auto;
+    z-index:1;
+}
+
+h2{
+    text-align:center;
+    margin-bottom:25px;
+    font-weight:400;
+    z-index:1;
+    max-width:420px;
+}
+
+/* ==============================
+   FORMULAIRE
+============================== */
+form{
+    position:relative;
+    backdrop-filter:blur(18px);
+    background:rgba(255,255,255,0.08);
+    border-radius:20px;
+    padding:38px 30px;
+    width:100%;
+    max-width:380px;
+    box-shadow:0 20px 50px rgba(0,0,0,0.45);
+    border:1px solid rgba(255,255,255,0.15);
+    animation:fadeIn .7s ease;
+    z-index:1;
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(30px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+/* ==============================
+   INPUTS
+============================== */
+input{
+    width:100%;
+    padding:14px 15px;
+    margin-bottom:18px;
+    border:none;
+    outline:none;
+    border-radius:12px;
+    background:rgba(255,255,255,0.15);
+    color:white;
+    font-size:16px; /* empêche zoom iOS */
+    transition:.25s;
+}
+
+input::placeholder{ color:#ddd; }
+
+input:focus{
+    background:rgba(255,255,255,0.25);
+    box-shadow:0 0 0 2px var(--afg-accent);
+}
+
+/* ==============================
+   BOUTON
+============================== */
+button{
+    width:100%;
+    min-height:48px;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    font-size:16px;
+    font-weight:600;
+    background:var(--afg-blue);
+    color:white;
+    cursor:pointer;
+    transition:.25s;
+    position:relative;
+}
+
+button:hover{
+    transform:translateY(-1px);
+    box-shadow:0 10px 25px rgba(0,198,255,.45);
+}
+
+button:active{
+    transform:scale(.98);
+}
+
+/* Loader */
+button.loading{
+    pointer-events:none;
+    background:#444;
+    color:transparent;
+}
+
+button.loading::after{
+    content:"";
+    width:18px;
+    height:18px;
+    border:3px solid #fff;
+    border-top:3px solid var(--afg-accent);
+    border-radius:50%;
+    position:absolute;
+    inset:0;
+    margin:auto;
+    animation:spin .8s linear infinite;
+}
+
+@keyframes spin{
+    to{transform:rotate(360deg);}
+}
+
+/* ==============================
+   MESSAGE
+============================== */
+#msg{
+    margin-top:15px;
+    text-align:center;
+    font-size:14px;
+    opacity:0;
+    transform:translateY(8px);
+    transition:.35s;
+    z-index:1;
+}
+
+#msg.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+#msg.success{color:#00ffae;}
+#msg.error{color:#ff6b6b;}
+
+/* ==============================
+   PAGE WEBINAIRE
+============================== */
+.webinaire-body{
+    justify-content:center;
+}
+
+.card{
+    backdrop-filter:blur(18px);
+    background:rgba(255,255,255,0.08);
+    border-radius:20px;
+    padding:40px 30px;
+    width:100%;
+    max-width:420px;
+    text-align:center;
+    box-shadow:0 20px 50px rgba(0,0,0,0.45);
+    border:1px solid rgba(255,255,255,0.15);
+    z-index:1;
+}
+
+.card h1{
+    margin:18px 0 10px;
+    font-weight:500;
+}
+
+.card p{
+    opacity:.9;
+    margin-bottom:30px;
+}
+
+.join-btn{
+    display:block;
+    text-decoration:none;
+    background:#00c6ff;
+    color:white;
+    font-weight:600;
+    padding:17px;
+    border-radius:14px;
+    font-size:17px;
+    transition:.25s;
+}
+
+.join-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 15px 35px rgba(0,198,255,.45);
+}
+
+.card small{
+    display:block;
+    margin-top:18px;
+    opacity:.7;
+    font-size:12px;
+}
+
+/* ==============================
+   PETITS MOBILES
+============================== */
+@media(max-width:380px){
+    form{padding:30px 20px;}
+    .card{padding:28px 20px;}
+}
+
+/* ==============================
+   TABLETTE
+============================== */
+@media(min-width:600px){
+    form{max-width:420px;}
+    .card{max-width:460px;}
+}
+
+/* ==============================
+   GRANDS ECRANS
+============================== */
+@media(min-width:1200px){
+    body{padding:40px;}
+    form{max-width:440px;}
+    .card{max-width:500px;}
+}
