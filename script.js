@@ -30,7 +30,7 @@ form.addEventListener("submit", async (e) => {
 
         if (data.status === "success") {
 
-            msg.innerText = "Inscription confirmée ✔";
+            msg.innerText = "Inscription confirmée";
             msg.className = "show success";
 
             form.reset();
