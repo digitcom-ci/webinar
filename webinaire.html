@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accès Webinaire</title>
+
+<style>
+:root{
+    --afg-blue:#662D5A;
+    --afg-light:#AF9DC4;
+    --afg-accent:#7ABAC9;
+    --text:#ffffff;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    padding:20px;
+    background:linear-gradient(135deg,var(--afg-blue),var(--afg-light),var(--afg-accent));
+    color:white;
+}
+
+.card{
+    backdrop-filter:blur(18px);
+    background:rgba(255,255,255,0.08);
+    border-radius:20px;
+    padding:40px 30px;
+    width:100%;
+    max-width:420px;
+    text-align:center;
+    box-shadow:0 20px 50px rgba(0,0,0,0.5);
+    border:1px solid rgba(255,255,255,0.15);
+}
+
+.logo-afg{
+    max-width:160px;
+    margin-bottom:20px;
+}
+
+h1{
+    margin-bottom:15px;
+    font-weight:500;
+}
+
+p{
+    margin-bottom:30px;
+    opacity:.9;
+}
+
+.join-btn{
+    display:block;
+    text-decoration:none;
+    background:#00c6ff;
+    color:white;
+    font-weight:600;
+    padding:18px;
+    border-radius:14px;
+    font-size:18px;
+    transition:.3s;
+}
+
+.join-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 15px 35px rgba(0,198,255,.5);
+}
+
+small{
+    display:block;
+    margin-top:20px;
+    opacity:.7;
+    font-size:12px;
+}
+
+@media(max-width:480px){
+    .card{
+        padding:30px 20px;
+    }
+}
+</style>
+
+</head>
+<body>
+
+<div class="card">
+    <img src="logo-afg.png" class="logo-afg">
+
+    <h1>Vous êtes inscrit ✔</h1>
+
+    <p>Cliquez ci-dessous pour rejoindre le webinaire en direct.</p>
+
+    <a href="https://zoom.us/j/TONLIENZOOM" target="_blank" class="join-btn">
+        Assister au webinaire
+    </a>
+
+    <small>Le webinaire s’ouvrira dans Zoom</small>
+</div>
+
+</body>
+</html>
